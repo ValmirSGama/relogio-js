@@ -1,0 +1,204 @@
+/* Zera as margens e espaçamentos, aplica o modelo de box-sizing e define a fonte padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Define as cores primárias usando variáveis CSS */
+:root {
+    --primary-color: #f6f7fb;
+    --white-color: #fff;
+    --black-color: #18191A;
+    --red-color: #e74c3c;
+}
+
+/* Estilo para o corpo do site, define o layout centralizado */
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+}
+
+/* Modo escuro, alterando as cores */
+body.dark {
+    --primary-color: #242526;
+    --white-color: #18191A;
+    --black-color: #fff;
+    --red-color: #e74c3c;
+}
+
+/* Define o layout flexível para o container principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Estilo para o relógio, definindo seu tamanho, centralização e aparência circular */
+.container .clock {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-color);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 25px 45px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Sombra ao redor do relógio */
+.container .clock::before {
+    content: '';
+    width: 525px;
+    height: 525px;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Define a posição e rotação dos números no relógio */
+.clock label {
+    position: absolute;
+    inset: 13px;
+    text-align: center;
+    transform: rotate(calc(var(--n) * (360deg / 12)));
+}
+
+/* Estilo dos números, incluindo tamanho da fonte, cor e sombra */
+.clock label span {
+    display: inline-block;
+    font-size: 38px;
+    font-weight: 600;
+    text-shadow: gray 0 0 20px;
+    color: var(--black-color);
+    transform: rotate(calc(var(--n) * (-360deg / 12)));
+}
+
+/* Indicador central no relógio */
+.container .indicator {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo do círculo central do relógio */
+.indicator::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 100;
+    background: var(--black-color);
+    border: 4px solid var(--red-color);
+}
+
+/* Estilo do ponteiro dos segundos */
+.indicator .hand {
+    position: absolute;
+    height: 209px;
+    width: 6px;
+    bottom: 0;
+    transform-origin: bottom;
+    border-radius: 50%; 
+    box-shadow: #e74c3c 0 0 10px;
+    background: var(--red-color);
+}
+
+/* Estilo do ponteiro dos minutos */
+.hand.minute {
+    width: 8px;
+    height: 193px;
+    border-radius: 50%;
+    box-shadow: #18191A 0 0 10px;
+    background: var(--black-color);
+}
+
+/* Estilo do ponteiro das horas */
+.hand.hour {
+    width: 10px;
+    height: 153px;
+    border-radius: 50%;
+    box-shadow: #18191A 0 0 10px;
+    background: var(--black-color);
+}
+
+/* Botão para alternar entre os modos claro e escuro */
+.mode-switch {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 400;
+    display: inline-block;
+    color: var(--white-color);
+    background: var(--black-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Estilos Responsivos --- */
+
+/* Ajustes para telas de tablet */
+@media (max-width: 768px) {
+    .container .clock {
+        width: 400px; /* Reduz o tamanho do relógio */
+        height: 400px;
+    }
+    .container .clock::before {
+        width: 425px; /* Tamanho menor para borda do relógio */
+        height: 425px;
+    }
+    .clock label span {
+        font-size: 30px; /* Diminui o tamanho da fonte dos números */
+    }
+    .indicator .hand {
+        height: 169px; /* Ajusta o tamanho do ponteiro dos segundos */
+   }
+    .hand.minute {
+        height: 153px; /* Ajusta o tamanho do ponteiro dos minutos */
+    }
+    .hand.hour {
+        height: 123px; /* Ajusta o tamanho do ponteiro das horas */
+    }
+    .mode-switch {
+        padding: 8px 16px; /* Reduz o padding para se ajustar melhor em telas menores */
+        font-size: 18px;   /* Diminui o tamanho da fonte */
+        border-radius: 6px; /* Ajusta a borda arredondada */
+    }
+}
+
+/* Ajustes para telas de celular */
+@media (max-width: 480px) {
+    .container .clock {
+        width: 300px; /* Tamanho menor para o relógio */
+        height: 300px;
+    }
+    .container .clock::before {
+        width: 325px;  /* Tamanho menor para borda do relógio */
+        height: 325px;
+    }
+    .clock label span {
+        font-size: 24px; /* Diminui ainda mais os números */
+    }
+    .indicator .hand {
+        height: 129px;  /* Ajusta o tamanho do ponteiro dos segundos */
+   }
+    .hand.minute {
+        height: 113px; /* Ajusta o tamanho do ponteiro dos minutos */
+    }
+    .hand.hour {
+        height: 93px;  /* Ajusta o tamanho do ponteiro das horas */
+    }
+    .mode-switch {
+        padding: 6px 12px; /* Padding ainda menor para dispositivos pequenos */
+        font-size: 16px;   /* Fonte menor para se adaptar ao espaço */
+        border-radius: 5px; /* Borda levemente reduzida */
+    }
+}
