@@ -52,6 +52,32 @@ body.dark {
     position: relative;
 }
 
+/* Adicionando traços para segundos */
+.container .clock .second-marks {
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .clock .second-marks div {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: var(--black-color);
+    transform-origin: center bottom;
+}
+
+/* Estilo para os múltiplos de 5 (big-mark) */
+.container .clock .second-marks .big-mark {
+    width: 4px; /* Peso maior a cada 5 segundos */
+    background-color: var(--red-color);
+}
+
 /* Sombra ao redor do relógio */
 .container .clock::before {
     content: '';
@@ -104,7 +130,7 @@ body.dark {
 /* Estilo do ponteiro dos segundos */
 .indicator .hand {
     position: absolute;
-    height: 209px;
+    height: 214px;
     width: 6px;
     bottom: 0;
     transform-origin: bottom;
@@ -116,7 +142,7 @@ body.dark {
 /* Estilo do ponteiro dos minutos */
 .hand.minute {
     width: 8px;
-    height: 193px;
+    height: 197px;
     border-radius: 50%;
     box-shadow: #18191A 0 0 10px;
     background: var(--black-color);
@@ -125,7 +151,7 @@ body.dark {
 /* Estilo do ponteiro das horas */
 .hand.hour {
     width: 10px;
-    height: 153px;
+    height: 157px;
     border-radius: 50%;
     box-shadow: #18191A 0 0 10px;
     background: var(--black-color);
@@ -151,6 +177,13 @@ body.dark {
         width: 400px; /* Reduz o tamanho do relógio */
         height: 400px;
     }
+    .container .clock .second-marks div {
+        width: 1.5px;
+        height: 7px; /* Traço menor para telas menores */
+    }
+    .container .clock .second-marks .big-mark {
+        width: 3.4px;
+    }
     .container .clock::before {
         width: 425px; /* Tamanho menor para borda do relógio */
         height: 425px;
@@ -159,13 +192,13 @@ body.dark {
         font-size: 30px; /* Diminui o tamanho da fonte dos números */
     }
     .indicator .hand {
-        height: 169px; /* Ajusta o tamanho do ponteiro dos segundos */
+        height: 174px; /* Ajusta o tamanho do ponteiro dos segundos */
    }
     .hand.minute {
-        height: 153px; /* Ajusta o tamanho do ponteiro dos minutos */
+        height: 157px; /* Ajusta o tamanho do ponteiro dos minutos */
     }
     .hand.hour {
-        height: 123px; /* Ajusta o tamanho do ponteiro das horas */
+        height: 127px; /* Ajusta o tamanho do ponteiro das horas */
     }
     .mode-switch {
         padding: 8px 16px; /* Reduz o padding para se ajustar melhor em telas menores */
@@ -180,6 +213,13 @@ body.dark {
         width: 300px; /* Tamanho menor para o relógio */
         height: 300px;
     }
+    .container .clock .second-marks div {
+        width: 1px;
+        height: 7px; /* Traço ainda menor para telas muito pequenas */
+    }
+    .container .clock .second-marks .big-mark {
+        width: 2.5px;
+    }
     .container .clock::before {
         width: 325px;  /* Tamanho menor para borda do relógio */
         height: 325px;
@@ -188,13 +228,13 @@ body.dark {
         font-size: 24px; /* Diminui ainda mais os números */
     }
     .indicator .hand {
-        height: 129px;  /* Ajusta o tamanho do ponteiro dos segundos */
+        height: 134px;  /* Ajusta o tamanho do ponteiro dos segundos */
    }
     .hand.minute {
-        height: 113px; /* Ajusta o tamanho do ponteiro dos minutos */
+        height: 117px; /* Ajusta o tamanho do ponteiro dos minutos */
     }
     .hand.hour {
-        height: 93px;  /* Ajusta o tamanho do ponteiro das horas */
+        height: 97px;  /* Ajusta o tamanho do ponteiro das horas */
     }
     .mode-switch {
         padding: 6px 12px; /* Padding ainda menor para dispositivos pequenos */
