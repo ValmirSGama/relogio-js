@@ -1,4 +1,4 @@
-// Obter referências para elementos DOM
+// Obter referências para elementos DOM 
 const body = document.querySelector("body"),
     hourHand = document.querySelector(".hour"),
     minuteHand = document.querySelector(".minute"),
@@ -68,6 +68,9 @@ const createSecondMarks = () => {
 // Chame a função para criar as segundas marcas
 createSecondMarks();
 
+// Carregar o som "tic-tac"
+const tickSound = new Audio("audio/tic-tac.mp3");
+
 const updateTime = () => {
     // Obter a hora atual e calcular graus para os ponteiros do relógio
     let date = new Date(),
@@ -79,6 +82,10 @@ const updateTime = () => {
     secondHand.style.transform = `rotate(${secToDeg}deg)`;
     minuteHand.style.transform = `rotate(${minToDeg}deg)`;
     hourHand.style.transform = `rotate(${hrToDeg}deg)`;
+
+    // Reproduzir o som de "tic-tac" a cada segundo
+    tickSound.currentTime = 0;  // Reiniciar o som
+    tickSound.play();           // Tocar o som
 };
 
 // Chamar updateTime para definir os ponteiros do relógio a cada segundo
