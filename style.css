@@ -220,6 +220,7 @@ body.dark {
         padding: 8px 16px; /* Reduz o padding para se ajustar melhor em telas menores */
         font-size: 18px;   /* Diminui o tamanho da fonte */
         border-radius: 6px; /* Ajusta a borda arredondada */
+        cursor: pointer;
     }
     .sound-switch {
         padding:6px 10px;
