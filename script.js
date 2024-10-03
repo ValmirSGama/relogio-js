@@ -4,7 +4,10 @@ const body = document.querySelector("body"),
     minuteHand = document.querySelector(".minute"),
     secondHand = document.querySelector(".second"),
     modeSwitch = document.querySelector(".mode-switch"),
+    soundSwitch = document.querySelector(".sound-switch"),
     clock = document.querySelector(".clock");
+
+    let soundOn = true; // Variável para controlar o estado do som
 
 // Verificar se o modo já está definido como "Dark Mode" no armazenamento local
 if (localStorage.getItem("mode") === "Dark Mode") {
@@ -71,6 +74,7 @@ createSecondMarks();
 // Carregar o som "tic-tac"
 const tickSound = new Audio("audio/tic-tac.mp3");
 
+// Função para atualizar o tempo e tocar o som, se o som estiver ligado
 const updateTime = () => {
     // Obter a hora atual e calcular graus para os ponteiros do relógio
     let date = new Date(),
@@ -83,13 +87,21 @@ const updateTime = () => {
     minuteHand.style.transform = `rotate(${minToDeg}deg)`;
     hourHand.style.transform = `rotate(${hrToDeg}deg)`;
 
-    // Reproduzir o som de "tic-tac" a cada segundo
-    tickSound.currentTime = 0;  // Reiniciar o som
-    tickSound.play();           // Tocar o som
+       // Reproduzir o som de "tic-tac" apenas se o som estiver ligado
+       if (soundOn) {
+        tickSound.currentTime = 0;  // Reiniciar o som
+        tickSound.play();           // Tocar o som
+    }          
 };
 
-// Chamar updateTime para definir os ponteiros do relógio a cada segundo
+// Inicie a atualização do relógio a cada segundo
 setInterval(updateTime, 1000);
 
 // Chamar a função updateTime no carregamento da página
 updateTime();
+
+// Adicionar um ouvinte de evento de clique ao soundSwitch para ligar/desligar o som
+soundSwitch.addEventListener("click", () => {
+    soundOn = !soundOn; // Alterna o estado do som
+    soundSwitch.textContent = soundOn ? "Som On" : "Som Off"; // Atualiza o texto do botão
+});

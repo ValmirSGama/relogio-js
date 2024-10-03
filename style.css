@@ -169,6 +169,22 @@ body.dark {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Estilo para o botão de controle de som */
+.sound-switch {
+    position: absolute;
+    top: 20px; /* Margem superior para afastar do topo */
+    right: 20px; /* Margem dereita para afastar da lateral */
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white-color);
+    background: var(--red-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 10; /* Garante que o botão fique acima de outros elementos */
+}
+
 /* --- Estilos Responsivos --- */
 
 /* Ajustes para telas de tablet */
@@ -205,6 +221,12 @@ body.dark {
         font-size: 18px;   /* Diminui o tamanho da fonte */
         border-radius: 6px; /* Ajusta a borda arredondada */
     }
+    .sound-switch {
+        padding:6px 10px;
+        font-size: 16px;
+        top: 15px;
+        right: 15px;
+    }
 }
 
 /* Ajustes para telas de celular */
@@ -240,5 +262,11 @@ body.dark {
         padding: 6px 12px; /* Padding ainda menor para dispositivos pequenos */
         font-size: 16px;   /* Fonte menor para se adaptar ao espaço */
         border-radius: 5px; /* Borda levemente reduzida */
+    }
+    .sound-switch {
+        padding: 4px 6px;
+        font-size: 14px;
+        top: 10px;
+        right: 10px;
     }
 }
