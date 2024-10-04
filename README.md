@@ -23,6 +23,7 @@ Este projeto é um relógio analógico simples, desenvolvido em **JavaScript**, 
 
 - Exibição de um relógio analógico funcional.
 - Alternância entre os modos claro e escuro.
+- Botão Switch para alternar entre "Ligar Som" e "Desligar Som".
 - Interface responsiva, ajustando-se automaticamente a diferentes tamanhos de tela (desktop, tablet e celular).
 
 ## Como Executar o Projeto
